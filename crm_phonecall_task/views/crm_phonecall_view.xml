@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record model="ir.ui.view" id="crm_case_inbound_phone_tree_view">
+        <field name="name">CRM - Logged Phone Calls Tree</field>
+        <field name="model">crm.phonecall</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="crm_phonecall.crm_case_inbound_phone_tree_view" />
+        <field name="arch" type="xml">
+            <button name="action_button_convert2opportunity" position="after">
+                <button string="Create a Task"
+                        icon="fa-bug"
+                        name="action_button_convert2task"
+                        type="object"/>
+            </button>
+        </field>
+    </record>
+
+</odoo>

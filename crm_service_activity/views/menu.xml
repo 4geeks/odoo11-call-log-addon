@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_main_service_activity"
+            name="Service Activity"
+            sequence="3"
+        />
+        <menuitem id="menu_service_activity_phone_calls"
+            name="Call Log"
+            parent="crm_service_activity.res_partner_menu_contacts"
+            sequence="3"
+        />
+        
+        <menuitem id="menu_service_activity_clients"
+            name="Client Management"
+            parent="crm_service_activity.res_partner_menu_contacts"
+            sequence="4"
+        />
+        
+        <menuitem id="res_partner_menu_active_contact"
+            name="Active"
+            action="action_active_contact"
+            parent="res_partner_active_type.menu_service_activity_clients"
+            sequence="3"
+        />
+
+        <record id="action_inactive_contact" model="ir.actions.act_window">
+            <field name="name">Inactive</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="context">{'default_active_type': 'inactive'}</field>
+            <field name="domain">[('active_type', '=', 'inactive')]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a Inactive contact in your contacts directory.
+              </p><p>
+                Odoo helps you easily track all activities related to
+                a customer: discussions, history of business opportunities,
+                documents, etc.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="res_partner_menu_inactive_contact"
+            name="Inactive"
+            action="action_inactive_contact"
+            parent="contacts.res_partner_menu_contacts"
+            sequence="4"/>
+
+        <record id="action_donotgo_contact" model="ir.actions.act_window">
+            <field name="name">Do Not Go</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="context">{'default_active_type': 'donotgo'}</field>
+            <field name="domain">[('active_type', '=', 'donotgo')]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a DO NOT GO contact in your contacts directory.
+              </p><p>
+                Odoo helps you easily track all activities related to
+                a customer: discussions, history of business opportunities,
+                documents, etc.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="res_partner_menu_donotgo_contact"
+            name="Do Not Go"
+            action="action_donotgo_contact"
+            parent="contacts.res_partner_menu_contacts"
+            sequence="5"/>
+
+        <record id="action_cod_contact" model="ir.actions.act_window">
+            <field name="name">COD</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="context">{'default_active_type': 'cod'}</field>
+            <field name="domain">[('active_type', '=', 'cod')]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a COD contact in your contacts directory.
+              </p><p>
+                Odoo helps you easily track all activities related to
+                a customer: discussions, history of business opportunities,
+                documents, etc.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="res_partner_menu_cod_contact"
+            name="COD"
+            action="action_cod_contact"
+            parent="contacts.res_partner_menu_contacts"
+            sequence="6"/>
+
+        <record id="action_all_contact" model="ir.actions.act_window">
+            <field name="name">All</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a ALL contact in your contacts directory.
+              </p><p>
+                Odoo helps you easily track all activities related to
+                a customer: discussions, history of business opportunities,
+                documents, etc.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="res_partner_menu_all_contact"
+            name="All"
+            action="action_all_contact"
+            parent="contacts.res_partner_menu_contacts"
+            sequence="1"/>
+
+    </data>
+</odoo>

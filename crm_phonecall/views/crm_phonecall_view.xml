@@ -27,9 +27,10 @@
         <field name="model">crm.phonecall</field>
         <field name="arch" type="xml">
             <tree colors="gray:state in ('cancel','done');blue:state in ('pending',)" string="Phone Calls">
-                <field name="date"/>
-                <field name="name"/>
-                <field name="partner_id"/>
+                <field name="date" string="Date"/>
+                <field name="partner_id" string="Contact"/>
+                <field name="name" string="Call Summary"/>
+                <field name="description" string="Call Description"/>
                 <button string="Meeting"
                         states="open,pending"
                         name="action_make_meeting"
@@ -42,7 +43,7 @@
                         icon="fa-hand-pointer-o"
                         attrs="{'invisible':[('opportunity_id','!=',False)]}"/>
                 <field name="partner_phone"/>
-                <field name="user_id"/>
+                <field name="user_id" invisible="1"/>
                 <field name="tag_ids" invisible="1"/>
                 <field name="create_date" invisible="1"/>
                 <field name="opportunity_id" invisible="1"/>
