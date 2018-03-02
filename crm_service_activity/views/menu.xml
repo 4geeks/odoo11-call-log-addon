@@ -7,25 +7,56 @@
         />
         <menuitem id="menu_service_activity_phone_calls"
             name="Call Log"
-            parent="crm_service_activity.res_partner_menu_contacts"
-            sequence="3"
+            parent="menu_main_service_activity"
+            sequence="1"
+        />
+        <record model="ir.actions.act_window" id="crm_case_categ_phone0">
+            <field name="name">Phone Calls</field>
+            <field name="res_model">crm.phonecall</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="view_id" ref="crm_phonecall.crm_case_inbound_phone_tree_view"/>
+            <field name="context">{"search_default_user_id":uid}</field>
+            <field name="search_view_id" ref="crm_phonecall.view_crm_case_phonecalls_filter"/>
+        </record>
+        <menuitem id="menu_service_activity_phone_calls_calls"
+            name="Phone Calls"
+            action="crm_case_categ_phone0"
+            parent="menu_service_activity_phone_calls"
         />
         
         <menuitem id="menu_service_activity_clients"
             name="Client Management"
-            parent="crm_service_activity.res_partner_menu_contacts"
+            parent="menu_main_service_activity"
             sequence="4"
         />
-        
+        <record id="action_active_contact" model="ir.actions.act_window">
+            <field name="name">Active Contacts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="context">{'default_active_type': 'active'}</field>
+            <field name="domain">[('active_type', '=', 'active')]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a Active contact in your contacts directory.
+              </p><p>
+                Odoo helps you easily track all activities related to
+                a customer: discussions, history of business opportunities,
+                documents, etc.
+              </p>
+            </field>
+        </record>
         <menuitem id="res_partner_menu_active_contact"
             name="Active"
             action="action_active_contact"
-            parent="res_partner_active_type.menu_service_activity_clients"
+            parent="menu_service_activity_clients"
             sequence="3"
         />
-
         <record id="action_inactive_contact" model="ir.actions.act_window">
-            <field name="name">Inactive</field>
+            <field name="name">Inctive Contacts</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
@@ -33,51 +64,15 @@
             <field name="search_view_id" ref="base.view_res_partner_filter"/>
             <field name="context">{'default_active_type': 'inactive'}</field>
             <field name="domain">[('active_type', '=', 'inactive')]</field>
-            <field name="help" type="html">
-              <p class="oe_view_nocontent_create">
-                Click to add a Inactive contact in your contacts directory.
-              </p><p>
-                Odoo helps you easily track all activities related to
-                a customer: discussions, history of business opportunities,
-                documents, etc.
-              </p>
-            </field>
         </record>
-
         <menuitem id="res_partner_menu_inactive_contact"
             name="Inactive"
             action="action_inactive_contact"
-            parent="contacts.res_partner_menu_contacts"
-            sequence="4"/>
-
-        <record id="action_donotgo_contact" model="ir.actions.act_window">
-            <field name="name">Do Not Go</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">res.partner</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">kanban,tree,form</field>
-            <field name="search_view_id" ref="base.view_res_partner_filter"/>
-            <field name="context">{'default_active_type': 'donotgo'}</field>
-            <field name="domain">[('active_type', '=', 'donotgo')]</field>
-            <field name="help" type="html">
-              <p class="oe_view_nocontent_create">
-                Click to add a DO NOT GO contact in your contacts directory.
-              </p><p>
-                Odoo helps you easily track all activities related to
-                a customer: discussions, history of business opportunities,
-                documents, etc.
-              </p>
-            </field>
-        </record>
-
-        <menuitem id="res_partner_menu_donotgo_contact"
-            name="Do Not Go"
-            action="action_donotgo_contact"
-            parent="contacts.res_partner_menu_contacts"
-            sequence="5"/>
-
+            parent="menu_service_activity_clients"
+            sequence="4"
+        />
         <record id="action_cod_contact" model="ir.actions.act_window">
-            <field name="name">COD</field>
+            <field name="name">CoD</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
@@ -85,46 +80,29 @@
             <field name="search_view_id" ref="base.view_res_partner_filter"/>
             <field name="context">{'default_active_type': 'cod'}</field>
             <field name="domain">[('active_type', '=', 'cod')]</field>
-            <field name="help" type="html">
-              <p class="oe_view_nocontent_create">
-                Click to add a COD contact in your contacts directory.
-              </p><p>
-                Odoo helps you easily track all activities related to
-                a customer: discussions, history of business opportunities,
-                documents, etc.
-              </p>
-            </field>
         </record>
-
         <menuitem id="res_partner_menu_cod_contact"
-            name="COD"
+            name="CoD"
             action="action_cod_contact"
-            parent="contacts.res_partner_menu_contacts"
-            sequence="6"/>
-
-        <record id="action_all_contact" model="ir.actions.act_window">
-            <field name="name">All</field>
+            parent="menu_service_activity_clients"
+            sequence="5"
+        />
+        <record id="action_donotgo_contact" model="ir.actions.act_window">
+            <field name="name">Do not Go</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="search_view_id" ref="base.view_res_partner_filter"/>
-            <field name="help" type="html">
-              <p class="oe_view_nocontent_create">
-                Click to add a ALL contact in your contacts directory.
-              </p><p>
-                Odoo helps you easily track all activities related to
-                a customer: discussions, history of business opportunities,
-                documents, etc.
-              </p>
-            </field>
+            <field name="context">{'default_active_type': 'donotgo'}</field>
+            <field name="domain">[('active_type', '=', 'donotgo')]</field>
         </record>
-
-        <menuitem id="res_partner_menu_all_contact"
-            name="All"
-            action="action_all_contact"
-            parent="contacts.res_partner_menu_contacts"
-            sequence="1"/>
+        <menuitem id="res_partner_menu_donotgo_contact"
+            name="Do not Go"
+            action="action_donotgo_contact"
+            parent="menu_service_activity_clients"
+            sequence="6"
+        />
 
     </data>
 </odoo>

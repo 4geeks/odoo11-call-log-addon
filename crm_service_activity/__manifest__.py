@@ -7,7 +7,7 @@
     'category': 'base',
     'summary': 'Main Service Activity',
     'depends': [
-        'contacts'
+        'contacts','crm_phonecall_task','res_partner_active_type'
     ],
     'data': [
         'views/menu.xml',

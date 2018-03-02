@@ -123,6 +123,7 @@
             <tree string="Phone Calls" editable="top">
                 <field name="date"/>
                 <field name="name"/>
+                <field name="description" />
                 <field name="partner_id"/>
                 <field name="partner_phone" invisible="1"/>
                 <field name="partner_mobile" invisible="1"/>
